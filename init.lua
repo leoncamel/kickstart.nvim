@@ -105,7 +105,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = ''
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -388,6 +388,13 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          layout_strategy = 'horizontal',
+          layout_config = {
+            width = 0.95,
+            height = 0.95,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -417,7 +424,7 @@ require('lazy').setup({
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
-          previewer = false,
+          previewer = true,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -926,6 +933,12 @@ require('lazy').setup({
     end,
   },
 
+  -- helm
+  {
+    'towolf/vim-helm',
+    ft = 'helm',
+  },
+
   -- neo-tree
   -- {
   --   'nvim-neo-tree/neo-tree.nvim',
@@ -964,6 +977,29 @@ require('lazy').setup({
         open_folds = true,
       }
     end,
+  },
+
+  -- render-markdown.nvim
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   opts = {},
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  -- },
+
+  -- glow for markdown
+  {
+    'ellisonleao/glow.nvim',
+    config = true,
+    cmd = 'Glow',
+  },
+
+  -- toggleterm
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
